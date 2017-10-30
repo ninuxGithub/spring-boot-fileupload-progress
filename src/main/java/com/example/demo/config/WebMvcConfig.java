@@ -14,21 +14,15 @@ import com.google.common.collect.ImmutableList;
 
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
-//	@Override
-//	public void addViewControllers(ViewControllerRegistry registry) {
-//		registry.addViewController("/ws").setViewName("/ws");
-//	}
 
 	@Override
 	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
 		super.extendMessageConverters(converters);
 		converters.add(new ByteArrayHttpMessageConverter());
-//		MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
-//		jsonConverter.setSupportedMediaTypes(ImmutableList.of(MediaType.ALL));
-//		jsonConverter.setSupportedMediaTypes(
-//				ImmutableList.of(MediaType.TEXT_HTML, MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN));
-//		jsonConverter.setDefaultCharset(Charset.forName("UTF-8"));
-//		converters.add(jsonConverter);
+		MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
+		jsonConverter.setSupportedMediaTypes(ImmutableList.of(MediaType.TEXT_HTML, MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN));
+		jsonConverter.setDefaultCharset(Charset.forName("UTF-8"));
+		converters.add(jsonConverter);
 
 	}
 
